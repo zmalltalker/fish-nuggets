@@ -1,5 +1,6 @@
 set PATH $PATH ~/bin
 set EDITOR "mate"
+set fish_greeting ""
 
 function parse_git_branch
 	sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
