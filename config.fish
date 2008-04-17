@@ -1,4 +1,4 @@
-set PATH $PATH ~/bin
+set PATH /opt/local/bin ~/.config/fish/bin ~/bin $PATH
 set EDITOR "mate"
 set fish_greeting ""
 
