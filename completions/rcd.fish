@@ -1,0 +1,1 @@
+complete -x -c rcd -a '(rdir | sed -e "s/\/.*\///g")' --description 'Rails Project'
