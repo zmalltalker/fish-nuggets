@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+
+if ARGV.first == '-l' || ARGV.first == '--list'
+	puts Gem.cache.map{ |s| s[1].name }.uniq.sort.join( "\n" )
+else
+	gem_name = ARGV.first
+	gem_info = Gem.cache.search( gem_name ).first
+	system "mate #{gem_info.full_gem_path}"
+end

@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+
+
+if ARGV.first == '-l' || ARGV.first == '--list'
+	puts Gem.cache.map{ |s| s[1].name }.uniq.sort.join( "\n" )
+else
+	gem_name = ARGV.first
+	gem_info = Gem.cache.search( gem_name ).first
+	doc_file = File.join( gem_info.full_gem_path.gsub(/1\.8\/gems/, "1.8/doc"), 'rdoc/index.html' )
+	system "open #{doc_file}"
+end
