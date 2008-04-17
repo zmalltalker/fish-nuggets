@@ -5,7 +5,7 @@ if test -d ~/.config/fish/bin
 	set PATH ~/.config/fish/bin $PATH
 end
 
-set EDITOR "mate"
+set -x EDITOR "/usr/local/bin/mate -w"
 set fish_greeting ""
 
 function parse_git_branch
