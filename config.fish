@@ -5,7 +5,13 @@ if test -d ~/.config/fish/bin
 	set PATH ~/.config/fish/bin $PATH
 end
 
-set -x EDITOR "/usr/local/bin/mate -w"
+# Textmate defaults to /usr/bin/mate, but let's check for /usr/local/bin/mate
+if test -f "/usr/local/bin/mate"
+	set -x EDITOR "/usr/local/bin/mate -w"
+else
+	set -x EDITOR "/usr/bin/mate -w"
+end
+
 set fish_greeting ""
 
 function parse_git_branch
@@ -53,3 +59,4 @@ end
 function sc -d "Run the Rails console"
 	script/console
 end
+
