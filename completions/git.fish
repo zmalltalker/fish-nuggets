@@ -53,9 +53,11 @@ complete -c git -n '__fish_use_subcommand' -x -a tag --description 'Create, list
 # Completions for the 'branch' subcommand
 #
 
-complete -c git -n 'contains \'branch\' (commandline -poc)' -l contains -x --description 'Shows only the branches that contains the'
-complete -c git -n 'contains \'branch\' (commandline -poc)' -l no-track -x --description 'Given'
+# complete -c git -n 'contains \'branch\' (commandline -poc)' -l contains -x --description 'Shows only the branches that contains the'
+# complete -c git -n 'contains \'branch\' (commandline -poc)' -l no-track -x --description 'Given'
 
+complete -c git -n 'contains \'checkout\' (commandline -poc)' -a '(git-branch | sed -e "s/[^a-zZ-Z]*//g")' --description "Check out this branch"
+# complete -c git -n 'contains \'branch\' (commandline -poc)' -a '(git_br())' -f --description "Git branch"
 
 #
 # Completions for the 'checkout' subcommand

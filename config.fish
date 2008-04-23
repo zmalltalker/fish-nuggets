@@ -1,4 +1,4 @@
-set PATH /opt/local/bin ~/bin $PATH
+set PATH /usr/bin /usr/local/bin /opt/local/bin ~/bin $PATH
 
 # Adding ~/.config/fish/bin to the path breaks for some reason unless the dir exists, let's test for that.
 if test -d ~/.config/fish/bin
