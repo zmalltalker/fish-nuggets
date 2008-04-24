@@ -1,6 +1,6 @@
 if status --is-login
 	for p in /usr/bin /usr/local/bin /opt/local/bin /usr/local/mysql/bin ~/bin ~/.config/fish/bin
-		if test -d ~/.config/fish/bin
+		if test -d $p
 			set PATH $p $PATH
 		end
 	end
