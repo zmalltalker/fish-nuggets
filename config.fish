@@ -1,8 +1,9 @@
-set PATH /usr/bin /usr/local/bin /opt/local/bin ~/bin $PATH
-
-# Adding ~/.config/fish/bin to the path breaks for some reason unless the dir exists, let's test for that.
-if test -d ~/.config/fish/bin
-	set PATH ~/.config/fish/bin $PATH
+if status --is-login
+	for p in /usr/bin /usr/local/bin /opt/local/bin ~/bin ~/.config/fish/bin
+		if test -d ~/.config/fish/bin
+			set PATH $p $PATH
+		end
+	end
 end
 
 # Textmate defaults to /usr/bin/mate, but let's check for /usr/local/bin/mate
