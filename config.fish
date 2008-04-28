@@ -48,10 +48,6 @@ end
 
 set BROWSER open
 
-function cdt -d "Change to tinde directory"
-  cd ~/tinde_git
-end
-
 bind \cr "rake"
 
 function ss -d "Run the script/server"
