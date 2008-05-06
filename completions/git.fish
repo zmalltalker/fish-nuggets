@@ -1,3 +1,6 @@
+function __git_branch_list  
+  git-branch | sed -e "s/[^a-zZ-Z_-]*//g"
+end
 
 #
 # Completions for the git command
@@ -56,7 +59,8 @@ complete -c git -n '__fish_use_subcommand' -x -a tag --description 'Create, list
 # complete -c git -n 'contains \'branch\' (commandline -poc)' -l contains -x --description 'Shows only the branches that contains the'
 # complete -c git -n 'contains \'branch\' (commandline -poc)' -l no-track -x --description 'Given'
 
-complete -c git -n 'contains \'checkout\' (commandline -poc)' -a '(git-branch | sed -e "s/[^a-zZ-Z_-]*//g")' --description "Check out this branch"
+
+complete -c git -n 'contains \'checkout\' (commandline -poc)' -a '(__git_branch_list)' --description "Check out this branch"
 # complete -c git -n 'contains \'branch\' (commandline -poc)' -a '(git_br())' -f --description "Git branch"
 
 #
@@ -100,6 +104,9 @@ complete -c git -n 'contains \'diff\' (commandline -poc)' -l c --description 'Fi
 complete -c git -n 'contains \'diff\' (commandline -poc)' -l - --description 'A/file'
 complete -c git -n 'contains \'diff\' (commandline -poc)' -l summary -x --description 'Describes newly added, deleted, renamed and copied'
 complete -c git -n 'contains \'diff\' (commandline -poc)' -l numstat -x --description 'Gives the diffstat(1) information but is designed'
+
+complete -c git -n 'contains \'diff\' (commandline -poc)' -a '(__git_branch_list)' --description "Diff with this branch"
+
 
 
 #
@@ -157,6 +164,7 @@ complete -c git -n 'contains \'log\' (commandline -poc)' -l - --description 'A/f
 # Completions for the 'merge' subcommand
 #
 
+complete -c git -n 'contains \'merge\' (commandline -poc)' -a '(__git_branch_list)' --description "Merge with this branch"
 
 
 #

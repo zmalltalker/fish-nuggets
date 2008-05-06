@@ -58,3 +58,7 @@ function sc -d "Run the Rails console"
 	script/console
 end
 
+set -x JAVA_HOME "/usr/"
+
+
+
