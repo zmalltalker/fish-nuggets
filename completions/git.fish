@@ -159,6 +159,12 @@ complete -c git -n 'contains \'log\' (commandline -poc)' -l combined --descripti
 complete -c git -n 'contains \'log\' (commandline -poc)' -l c --description 'File'
 complete -c git -n 'contains \'log\' (commandline -poc)' -l - --description 'A/file'
 
+complete -c git -n 'contains \'log\' (commandline -poc)' -l stat -x --description 'Show stats with files changed'
+complete -c git -n 'contains \'log\' (commandline -poc)' -l shortstat -x --description 'Show stats with number of files changed'
+complete -c git -n 'contains \'log\' (commandline -poc)' -l name-status -x --description 'Show stats a-la Subversion'
+
+
+
 
 #
 # Completions for the 'merge' subcommand
