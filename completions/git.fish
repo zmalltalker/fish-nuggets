@@ -1,5 +1,5 @@
 function __git_branch_list  
-  git-branch | sed -e "s/[^a-zZ-Z_-]*//g"
+  git branch | sed -e "s/[^a-zZ-Z_-]*//g"
 end
 
 #
@@ -38,6 +38,9 @@ complete -c git -n '__fish_use_subcommand' -x -a rm --description 'Remove files 
 complete -c git -n '__fish_use_subcommand' -x -a show --description 'Show various types of objects'
 complete -c git -n '__fish_use_subcommand' -x -a status --description 'Show the working tree status'
 complete -c git -n '__fish_use_subcommand' -x -a tag --description 'Create, list, delete or verify a tag object signed with GPG'
+complete -c git -n '__fish_use_subcommand' -x -a cherry-pick --description 'Cherry-pick from another branch'
+
+
 
 
 #
@@ -171,6 +174,7 @@ complete -c git -n 'contains \'log\' (commandline -poc)' -l name-status -x --des
 #
 
 complete -c git -n 'contains \'merge\' (commandline -poc)' -a '(__git_branch_list)' --description "Merge with this branch"
+
 
 
 #
