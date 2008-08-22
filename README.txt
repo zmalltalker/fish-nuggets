@@ -1,4 +1,4 @@
-= Fish nuggets
+h1. Fish nuggets
 
 The fish nuggets project contains various completions and functions for the amazing "Fish shell":http://www.fish-shell.org.
 
