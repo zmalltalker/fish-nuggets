@@ -23,9 +23,9 @@ h2. Rubygems featuers
 h2.  Installation
 
   cd ~/.config/fish
-  git init .
+  git init 
   git add .
   git remote add github git://github.com/zmalltalker/fish-nuggets.git
-  git pull
+  git pull github master
 
 Go into ~/.config/fish and add this repository, then pull. This will add the scripts in this projects for you to use.
