@@ -15,7 +15,7 @@ h2. Capistrano features
 
 Like Rake, lets you use tab completion for Capistrano tasks.
 
-h2. Rubygems featuers
+h2. Rubygems features
 
 * edit_gem with tab completion for gem name lets you view the source for installed gems
 * gem_doc with tab completion for gem name lets you view Rdoc for installed gems
