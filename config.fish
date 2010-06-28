@@ -20,6 +20,10 @@ function parse_git_branch
 	sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 end
 
+function parse_svn_tag_or_branch
+        sh -c 'svn info | grep "^URL:" | egrep -o "(tags|branches)/[^/]+|trunk" | egrep -o "[^/]+$"'
+end
+
 function parse_svn_revision
 	sh -c 'svn info 2> /dev/null' | sed -n '/^Revision/p' | sed -e 's/^Revision: \(.*\)/\1/'
 end
@@ -34,9 +38,14 @@ function fish_prompt -d "Write out the prompt"
 		printf ' %s%s' (set_color red) (prompt_pwd)
 	end
 
+        # Print subversion tag or branch
+        if test -d ".svn"
+                printf ' %s%s%s' (set_color normal) (set_color blue) (parse_svn_tag_or_branch)
+        end
+        
 	# Print subversion revision
 	if test -d ".svn"
-		printf ' %s%s@%s' (set_color normal) (set_color blue) (parse_svn_revision)
+		printf '%s%s@%s' (set_color normal) (set_color blue) (parse_svn_revision)
 	end
 
 	# Print git branch
@@ -58,7 +67,7 @@ function sc -d "Run the Rails console"
 	script/console
 end
 
-set -x JAVA_HOME "/usr/"
+set -x JAVA_HOME "/opt/java"
 
 
 
