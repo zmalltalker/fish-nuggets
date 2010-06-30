@@ -69,5 +69,5 @@ end
 
 set -x JAVA_HOME "/opt/java"
 
-
-
+# yarrr, add /var/lib/gems/1.8/bin to path so gems installed by the retarded ubuntu rubygems package are on the path
+set -x PATH $PATH "/var/lib/gems/1.8/bin"
