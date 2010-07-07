@@ -3,6 +3,6 @@ function md5pwd
                 case Linux
                      pwd | md5sum --text -
                 case Darwin
-                     pwd | md5 -q -s
+                    md5 -q -s (pwd)
          end
 end
