@@ -6,12 +6,33 @@ if status --is-login
 	end
 end
 
-# Textmate defaults to /usr/bin/mate, but let's check for /usr/local/bin/mate
-if test -f "/usr/local/bin/mate"
-	set -x EDITOR "/usr/local/bin/mate -w"
-else
-	set -x EDITOR "/usr/bin/mate -w"
+# Load custom settings for current hostname
+set HOST_SPECIFIC_FILE ~/.config/fish/(hostname).fish
+if test -f $HOST_SPECIFIC_FILE
+   . $HOST_SPECIFIC_FILE
+else 
+   echo Creating host specific file: $HOST_SPECIFIC_FILE
+   touch $HOST_SPECIFIC_FILE
 end
+   
+# Load custom settings for current user
+set USER_SPECIFIC_FILE ~/.config/fish/(whoami).fish
+if test -f $USER_SPECIFIC_FILE
+   . $USER_SPECIFIC_FILE
+else
+   echo Creating user specific file: $USER_SPECIFIC_FILE
+   touch $USER_SPECIFIC_FILE
+end
+
+# Load custom settings for current OS
+set PLATFORM_SPECIFIC_FILE ~/.config/fish/(uname -s).fish
+if test -f $PLATFORM_SPECIFIC_FILE
+   . $PLATFORM_SPECIFIC_FILE
+else
+   echo Creating platform specific file: $PLATFORM_SPECIFIC_FILE
+   touch $PLATFORM_SPECIFIC_FILE
+end  
+
 
 set fish_greeting ""
 set -x CLICOLOR 1
@@ -55,7 +76,6 @@ function fish_prompt -d "Write out the prompt"
 	printf '%s> ' (set_color normal)
 end
 
-set BROWSER open
 
 bind \cr "rake"
 
@@ -67,7 +87,12 @@ function sc -d "Run the Rails console"
 	script/console
 end
 
-set -x JAVA_HOME "/opt/java"
+if test -d "/opt/java"
+   set -x JAVA_HOME "/opt/java"
+end
 
 # yarrr, add /var/lib/gems/1.8/bin to path so gems installed by the retarded ubuntu rubygems package are on the path
-set -x PATH $PATH "/var/lib/gems/1.8/bin"
+set CUSTOM_GEM_PATH "/var/lib/gems/1.8/bin"
+if test -d $CUSTOM_GEM_PATH
+    set -x PATH $PATH "/var/lib/gems/1.8/bin"
+end
