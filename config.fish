@@ -44,7 +44,7 @@ function fish_prompt -d "Write out the prompt"
 	end
 
 	# Print git branch
-	if test -d ".git"
+	if test -d ".git" -o -f ".git"
 		printf ' %s%s/%s' (set_color normal) (set_color blue) (parse_git_branch)
 	end
 	printf '%s> ' (set_color normal)
