@@ -15,6 +15,11 @@ function parse_git_branch
 	sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 end
 
+function is_git
+	git status >/dev/null ^&1	
+	return $status
+end
+
 function parse_svn_tag_or_branch
         sh -c 'svn info | grep "^URL:" | egrep -o "(tags|branches)/[^/]+|trunk" | egrep -o "[^/]+$"'
 end
@@ -44,7 +49,7 @@ function fish_prompt -d "Write out the prompt"
 	end
 
 	# Print git branch
-	if test -d ".git"
+	if is_git
 		printf ' %s%s/%s' (set_color normal) (set_color blue) (parse_git_branch)
 	end
 	printf '%s> ' (set_color normal)
