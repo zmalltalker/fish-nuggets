@@ -45,7 +45,7 @@ function parse_svn_revision
 end
 
 function is_svn
-	svnversion | egrep -vq '^Unversioned directory'
+	svnversion | egrep -vq '^(Unversioned directory|exported)'
 	return $status
 end
 
