@@ -71,11 +71,15 @@ function fish_prompt -d "Write out the prompt"
 
 	# Print git tag or branch
 	if is_git
-		printf ' %s%s/%s' (set_color normal) (set_color blue) (parse_git_tag_or_branch)
-		set git_ahead_of_remote (git_parse_ahead_of_remote)
-		if [ -n "$git_ahead_of_remote" -a "$git_ahead_of_remote" != "0" ]
-			printf ' +%s' (git_parse_ahead_of_remote)
-		end
+	set -l branch_count (git branch | wc -l)
+		if test $branch_count -gt 0
+            printf ' %s%s[%s]' (set_color normal) (set_color blue) (parse_git_tag_or_branch)
+			set git_ahead_of_remote (git_parse_ahead_of_remote)
+			if [ -n "$git_ahead_of_remote" -a "$git_ahead_of_remote" != "0" ]
+				printf ' +%s' (git_parse_ahead_of_remote)
+			end
+        end
+
 	end
 	printf '%s> ' (set_color normal)
 end
