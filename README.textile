@@ -21,12 +21,13 @@ h2. Rubygems features
 * gem_doc with tab completion for gem name lets you view Rdoc for installed gems
 
 h2.  Installation
-
-  cd ~/.config/fish
+<pre><code>  cd ~/.config/fish
   git init 
   git add .
   git remote add github git://github.com/zmalltalker/fish-nuggets.git
   git pull github master
+</code></pre>
+
 
 Go into ~/.config/fish and add this repository, then pull. This will add the scripts in this projects for you to use.
 
