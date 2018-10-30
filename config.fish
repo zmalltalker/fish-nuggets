@@ -28,7 +28,7 @@ function parse_git_tag_or_branch
 end
 
 function git_parse_ahead_of_remote
-	git status ^/dev/null | grep 'Your branch is ahead of' | sed -e 's/# Your branch is ahead of .* by \(.*\) commit.*/\1/g'
+	git status ^/dev/null | grep 'Your branch is ahead of' | sed -e 's/.*Your branch is ahead of .* by \(.*\) commit.*/\1/g'
 end
 
 function is_git
